@@ -29,6 +29,20 @@ public:
 		NIL->color = black;
 		root = NIL;
 	}
+	
+	~BST() {
+		deleteNode(root);
+	}
+	
+	void deleteNode(Node<T>* temp) {
+		if (!temp) {
+			return;
+		}
+		
+		deleteNode(temp->left);
+		deleteNode(temp->right);
+		delete temp;
+	
 
 	bool _color(const T& val)const
 	{
