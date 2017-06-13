@@ -30,7 +30,7 @@ public:
 		root = NIL;
 	}
 	
-	~BST() {
+	~RBT() {
 		deleteNode(root);
 	}
 	
