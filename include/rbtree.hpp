@@ -42,6 +42,7 @@ public:
 		deleteNode(temp->left);
 		deleteNode(temp->right);
 		delete temp;
+	}
 	
 
 	bool _color(const T& val)const
