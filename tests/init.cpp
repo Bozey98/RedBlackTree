@@ -1,4 +1,4 @@
-#include <RBTree.hpp>
+#include <rbtree.hpp>
 #include <catch.hpp>
 
 SCENARIO ("init", "[init]")
