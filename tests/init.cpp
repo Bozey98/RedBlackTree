@@ -1,6 +1,7 @@
 #include <rbtree.hpp>
 #include <catch.hpp>
 
+
 SCENARIO ("init", "[init]")
 {
   RBT<int> test;
@@ -14,7 +15,7 @@ SCENARIO("insert", "[init]")
   REQUIRE(test.search(1) != 0);
 }
 
-SCENARIO("insert_1", "[init]")
+SCENARIO("insert1", "[init]")
 {
   RBT<int> tree;
   tree.insert(1);
