@@ -4,18 +4,17 @@ const bool black = 1;
 const bool red = 0;
 
 
-template<typename T>
+template<typename T> 
 struct Node
 {
-	T val;
+	T value;
+	bool color;
 	Node* left;
 	Node* right;
 	Node* parent;
-	bool color;
-
 };
 
-template<typename T>
+template<typename T> 
 class RBT
 {
 private:
@@ -29,25 +28,10 @@ public:
 		NIL->color = black;
 		root = NIL;
 	}
-	
-	~RBT() {
-		deleteNode(root);
-	}
-	
-	void deleteNode(Node<T>* temp) {
-		if (!temp) {
-			return;
-		}
-		
-		deleteNode(temp->left);
-		deleteNode(temp->right);
-		delete temp;
-	}
-	
 
-	bool _color(const T& val)const
+	bool _color(const T& value)const
 	{
-		return search(val)->color;
+		return search(value)->color;
 	}
 
 	Node<T>* _root()const
@@ -170,11 +154,11 @@ public:
 	{
 		if (search(added))
 		{
-			std::cout << "This val's already added in the tree\n";
+			std::cout << "This value's already added in the tree\n";
 			return;
 		}
 		Node<T>* daughter = new Node<T>;
-		daughter->val = added;
+		daughter->value = added;
 		daughter->color = red;
 		daughter->left = daughter->right = daughter->parent = NIL;
 		Node<T>* parent = NIL;
@@ -188,16 +172,16 @@ public:
 		while (temp != NIL)
 		{
 
-			if (daughter->val == temp->val)
+			if (daughter->value == temp->value)
 				return;
 
 			parent = temp;
-			if (added < temp->val)
+			if (added < temp->value)
 				temp = temp->left;
 			else
 				temp = temp->right;
 		}
-		if (added < parent->val)
+		if (added < parent->value)
 		{
 			parent->left = daughter;
 		}
@@ -210,16 +194,16 @@ public:
 		insertFixup(daughter);
 	}
 
-	Node<T>* search(const T& val)const
+	Node<T>* search(const T& value)const
 	{
 		Node<T>* current = root;
 		while (current != NIL)
 		{
-			if (val == current->val)
+			if (value == current->value)
 				return current;
 			else
 			{
-				if (val < current->val)
+				if (value < current->value)
 					current = current->left;
 				else current = current->right;
 			}
